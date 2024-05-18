@@ -1,30 +1,70 @@
-<img src="https://github.com/bosch-mining/web-development-internship/blob/master/logo.png?raw=true" width="250" height="65">
+# Getting Started with Create React App
 
-# ESTÁGIO EM TI - DESENVOLVIMENTO WEB (13031)
-[![SmartRecruiters](https://img.shields.io/badge/Powered%20By-SmartRecruiters-brightgreen.svg)](https://smrtr.io/4mbxR)  
-Av Robert Bosch, Campinas, SP, Brasil - Intern
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Implementação do Frontend
-O teste que propusemos para o explorar os seus conhecimentos de Frontend têm como objetivo a implementação de uma lista de tarefas.
-Você pode implementar a aplicação utilizando a ferramenta/framework que quiser ou tiver maior afinidade (Javascript Nativo, jQuery, Angular, React, Vue).  
+## Available Scripts
 
-Dentro do arquivo `index.html` você encontra um esqueleto da aplicação com alguns exemplos, leia o código com atenção e implemente a sua solução à partir dele.
-Os requisitos necessários para finalizar o teste os seguintes:
-- Criar uma nova tarefa;
-- Apagar uma tarefa existente;
-- Finalizar a tarefa (a descrição da mesma deve ficar tachada/rasurada. e.g.: ~~e aí meu chapa? ( ͡° ͜ʖ ͡°)~~);
-- Limpar o quadro de tarefas;
+In the project directory, you can run:
 
-## Bônus (opcional) :star2:
-Você pode adicionar a funcionalidade de atualizar a descrição de uma atividade adicionando um ícone ao final de cada tarefa que possibilite a alteração do texto de descrição da mesma.
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Critérios de avaliação
-Nossa análise vai além do resultado final então se você tiver um problema implementando algum detalhe nos envie a sua solução mesmo assim.
-- Capacidade em assimilar um conteúdo novo
-- Organização
-- Atenção aos requisitos
-- Empenho em entregar algo, mesmo que minimamente funcional
-- Tratamento de erros
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-# Boa sorte! :punch:
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
