@@ -1,0 +1,17 @@
+.inputContainer {
+    margin: 10px 0;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border-color: #56288A;
+  }
+  
