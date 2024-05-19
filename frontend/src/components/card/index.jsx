@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../input";
 import Task from "../task";
 import styles from "./Card.module.css";
+import axios from "axios";
 
 function Card() {
   const [tasks, setTasks] = useState([]);
   const [taskName, setTaskName] = useState("");
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/tasks")
+        .then(response => {
+          setTasks(response.data);
+        })
+        .catch(error => {
+          console.error("Erro ao carregar tarefas:", error);
+        });
+  }, []);
 
   const handleNameChange = (event) => {
     setTaskName(event.target.value);
@@ -14,23 +25,37 @@ function Card() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (taskName) {
-      const newTask = {
-        id: Date.now(),
-        name: taskName
-      };
-      setTasks([...tasks, newTask]);
-      setTaskName("");
+      axios.post("http://localhost:8080/tasks", { name: taskName })
+          .then(response => {
+            setTasks([...tasks, response.data]);
+            setTaskName("");
+          })
+          .catch(error => {
+            console.error("Erro ao criar tarefa:", error);
+          });
     }
   };
 
   const handleDelete = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    axios.delete(`http://localhost:8080/tasks/${id}`)
+        .then(() => {
+          setTasks(tasks.filter(task => task.id !== id));
+        })
+        .catch(error => {
+          console.error("Erro ao excluir tarefa:", error);
+        });
   };
 
   const handleEdit = (id, newName) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, name: newName } : task
-    ));
+    axios.put(`http://localhost:8080/tasks/${id}`, { name: newName })
+        .then(() => {
+          setTasks(tasks.map(task =>
+              task.id === id ? { ...task, name: newName } : task
+          ));
+        })
+        .catch(error => {
+          console.error("Erro ao atualizar tarefa:", error);
+        });
   };
 
   return (
