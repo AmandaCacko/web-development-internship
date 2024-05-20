@@ -63,6 +63,16 @@ function Card() {
     handleEdit(id, currentName, newState);
   };
 
+  const handleDeleteAll = () => {
+    axios.delete("http://localhost:8080/tasks")
+      .then(() => {
+        setTasks([]);
+      })
+      .catch(error => {
+        console.error("Erro ao excluir todas as tarefas:", error);
+      });
+  };
+
   return (
     <div className={styles.gradientStyle}>
       <h1>My To-do List</h1>
@@ -88,8 +98,8 @@ function Card() {
         ))}
       </div>
       {tasks.length > 0 && (
-        <button className={styles.btnSend} onClick={() => setTasks([])}>
-          DELETE ALL TASKS
+        <button className={styles.btnSend} onClick={handleDeleteAll}>
+            DELETE ALL TASKS
         </button>
       )}
     </div>

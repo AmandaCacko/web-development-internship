@@ -30,6 +30,10 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
+    public void deleteAllTasks() {
+        taskRepository.deleteAll();
+    }
+
     public Task editTask(Long id, Task task) {
         Optional<Task> existingTask = taskRepository.findById(id);
         if (existingTask.isPresent()) {
