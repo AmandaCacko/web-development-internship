@@ -58,9 +58,9 @@ function Card() {
       });
   };
 
-  const toggleTaskState = (id, currentState) => {
+  const toggleTaskState = (id, currentState, currentName) => {
     const newState = currentState === "OPEN" ? "DONE" : "OPEN";
-    handleEdit(id, null, newState);
+    handleEdit(id, currentName, newState);
   };
 
   return (
@@ -83,7 +83,7 @@ function Card() {
             task={task} 
             onDelete={handleDelete} 
             onEdit={handleEdit} 
-            onToggleState={toggleTaskState}
+            onToggleState={() => toggleTaskState(task.id, task.state, task.name)}
           />
         ))}
       </div>

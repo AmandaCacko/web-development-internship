@@ -7,7 +7,7 @@ function Task({ task, onDelete, onEdit, onToggleState }) {
   const [editedName, setEditedName] = useState(task.name);
 
   const handleCheckboxChange = () => {
-    onToggleState(task.id, task.state);
+    onToggleState();
   };
 
   const handleEdit = () => {
