@@ -10,12 +10,12 @@ function Card() {
 
   useEffect(() => {
     axios.get("http://localhost:8080/tasks")
-        .then(response => {
-          setTasks(response.data);
-        })
-        .catch(error => {
-          console.error("Erro ao carregar tarefas:", error);
-        });
+      .then(response => {
+        setTasks(response.data);
+      })
+      .catch(error => {
+        console.error("Erro ao carregar tarefas:", error);
+      });
   }, []);
 
   const handleNameChange = (event) => {
@@ -25,37 +25,42 @@ function Card() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (taskName) {
-      axios.post("http://localhost:8080/tasks", { name: taskName })
-          .then(response => {
-            setTasks([...tasks, response.data]);
-            setTaskName("");
-          })
-          .catch(error => {
-            console.error("Erro ao criar tarefa:", error);
-          });
+      axios.post("http://localhost:8080/tasks", { name: taskName, state: "OPEN" })
+        .then(response => {
+          setTasks([...tasks, response.data]);
+          setTaskName("");
+        })
+        .catch(error => {
+          console.error("Erro ao criar tarefa:", error);
+        });
     }
   };
 
   const handleDelete = (id) => {
     axios.delete(`http://localhost:8080/tasks/${id}`)
-        .then(() => {
-          setTasks(tasks.filter(task => task.id !== id));
-        })
-        .catch(error => {
-          console.error("Erro ao excluir tarefa:", error);
-        });
+      .then(() => {
+        setTasks(tasks.filter(task => task.id !== id));
+      })
+      .catch(error => {
+        console.error("Erro ao excluir tarefa:", error);
+      });
   };
 
-  const handleEdit = (id, newName) => {
-    axios.put(`http://localhost:8080/tasks/${id}`, { name: newName })
-        .then(() => {
-          setTasks(tasks.map(task =>
-              task.id === id ? { ...task, name: newName } : task
-          ));
-        })
-        .catch(error => {
-          console.error("Erro ao atualizar tarefa:", error);
-        });
+  const handleEdit = (id, newName, newState) => {
+    axios.put(`http://localhost:8080/tasks/${id}`, { name: newName, state: newState })
+      .then(response => {
+        setTasks(tasks.map(task =>
+          task.id === id ? response.data : task
+        ));
+      })
+      .catch(error => {
+        console.error("Erro ao atualizar tarefa:", error);
+      });
+  };
+
+  const toggleTaskState = (id, currentState) => {
+    const newState = currentState === "OPEN" ? "DONE" : "OPEN";
+    handleEdit(id, null, newState);
   };
 
   return (
@@ -78,6 +83,7 @@ function Card() {
             task={task} 
             onDelete={handleDelete} 
             onEdit={handleEdit} 
+            onToggleState={toggleTaskState}
           />
         ))}
       </div>

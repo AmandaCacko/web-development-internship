@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 import { FaTrash, FaEdit, FaCheck } from "react-icons/fa";
 import styles from './Task.module.css';
 
-function Task({ task, onDelete, onEdit }) {
-  const [isChecked, setIsChecked] = useState(false);
+function Task({ task, onDelete, onEdit, onToggleState }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(task.name);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    onToggleState(task.id, task.state);
   };
 
   const handleEdit = () => {
     if (isEditing) {
-      onEdit(task.id, editedName);
+      onEdit(task.id, editedName, task.state);
     }
     setIsEditing(!isEditing);
   };
@@ -23,7 +22,7 @@ function Task({ task, onDelete, onEdit }) {
       <input 
         className={styles.checkbox} 
         type="checkbox" 
-        checked={isChecked} 
+        checked={task.state === "DONE"} 
         onChange={handleCheckboxChange} 
       />
       <div className={styles.taskInfo}>
@@ -34,7 +33,7 @@ function Task({ task, onDelete, onEdit }) {
             onChange={(e) => setEditedName(e.target.value)} 
           />
         ) : (
-          <span className={isChecked ? styles.checked : ''}>{task.name}</span>
+          <span className={task.state === "DONE" ? styles.checked : ''}>{task.name}</span>
         )}
       </div>
       <div className={styles.actionBtn}>
